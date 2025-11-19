@@ -39,7 +39,7 @@ body {
   height: 100%;
   z-index: -2;
   filter: blur(1px);
-  background-image: url(/img/bg-prewed.jpg);
+  background-image: url(/img/first-meet.jpg);
   background-size: cover;
   background-position: center;
 }

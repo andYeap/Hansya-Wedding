@@ -1,13 +1,15 @@
 # Wedding Site
 
 **Live Demo** :
-[Click here](https://zisum-wedding.netlify.app)
+[Click here](https://Hansya-wedding.netlify.app)
 
 ## Snapshot
 
-![Snapshot](img/Screenshot.png)
+![Snapshot](img/Screenshot.png)
 
-## Library
+
+## Library
+
 - Bootstrap v5.3 [Link](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 - Google Fonts [Link](https://fonts.google.com)
 - Bootstrap Icons [Link](https://icons.getbotstrap.com)
