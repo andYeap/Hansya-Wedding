@@ -1,6 +1,4 @@
 /* ========================================================================= */
-
-/* ========================================================================= */
 // Navbar Hidden or Visible
 const hamburger = document.querySelector(".navbar-toggler");
 const stickyTop = document.querySelector(".sticky-top");
@@ -17,65 +15,66 @@ offcanvas.addEventListener("hidden.bs.offcanvas", function () {
 
 /* ========================================================================= */
 // Backsound Music
-var track = document.getElementById("track");
-var controlBtn = document.getElementById("play-pause");
+const track = document.getElementById("track");
+const controlBtn = document.getElementById("play-pause");
 
 function playPause() {
   if (track.paused) {
     track.play();
-    //controlBtn.textContent = "Pause";
     controlBtn.className = "pause";
   } else {
     track.pause();
-    //controlBtn.textContent = "Play";
     controlBtn.className = "play";
   }
 }
 
 controlBtn.addEventListener("click", playPause);
+
 track.addEventListener("ended", function () {
   controlBtn.className = "play";
 });
 
-// Backsound Website
-// function playSound(audioName, loop, pause) {
-//   let audio = new Audio(audioName);
-//   audio.pause = false;
-//   audio.loop = true;
-//   audio.play();
-// }
-// playSound("/music.mp3");
+// Autoplay on load
+window.addEventListener("load", function () {
+  track.muted = false; // Hapus jika ingin autoplay dengan suara langsung
+  track.play().then(() => {
+    controlBtn.className = "pause";
+  }).catch((err) => {
+    console.log("Autoplay gagal:", err);
+    controlBtn.className = "play";
+  });
+});
 
 /* ========================================================================= */
 // RSVP
+const button = document.getElementById("btn-whatsapp");
 
-  let name = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
-  let phone = document.getElementById("phone").value;
-  let message = document.getElementById("message").value;
-  let button = document.getElementById("btn-whatsapp");
+button.addEventListener("click", () => {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const message = document.getElementById("message").value;
 
-  button.addEventListener("click", ()=>{
-    let url =
-      "https://wa.me/62812341234?text=" + // Ubah nomor whatsapp dengan nomor kalian
-      "Nama : " + name + "%0a" +
-      "Email : " + email + "%0a" +
-      "Phone : " + phone + "%0a" + "%0a" +
-      "Pesan : " + "%0a" + message;
-  
-    window.open(url, "_black").focus();
-  })
+  const url =
+    "https://wa.me/6282220004080?text=" +
+    "Nama : " + name + "%0a" +
+    "Email : " + email + "%0a" +
+    "Phone : " + phone + "%0a%0a" +
+    "Pesan : %0a" + message;
+
+  window.open(url, "_blank").focus();
+});
 
 /* ========================================================================= */
 // CopyText-Gifts
-let copyText = document.querySelector(".copy-text");
+const copyText = document.querySelector(".copy-text");
 copyText.querySelector("button").addEventListener("click", () => {
-  let input = document.querySelector("input.text");
+  const input = document.querySelector("input.text");
   input.select();
   document.execCommand("copy");
   copyText.classList.add("active");
   window.getSelection().removeAllRanges();
-  setTimeout(function () {
+  setTimeout(() => {
     copyText.classList.remove("active");
   }, 2000);
 });
