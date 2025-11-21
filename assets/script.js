@@ -18,35 +18,36 @@ offcanvas.addEventListener("hidden.bs.offcanvas", function () {
 });
 
 /* ========================================================================= */
-// Backsound Music
-var track = document.getElementById("track");
-var controlBtn = document.getElementById("play-pause");
+// Backsound Music Autoplay
+const track = document.getElementById("track");
+const controlBtn = document.getElementById("play-pause");
 
 function playPause() {
   if (track.paused) {
     track.play();
-    //controlBtn.textContent = "Pause";
     controlBtn.className = "pause";
   } else {
     track.pause();
-    //controlBtn.textContent = "Play";
     controlBtn.className = "play";
   }
 }
 
 controlBtn.addEventListener("click", playPause);
+
 track.addEventListener("ended", function () {
   controlBtn.className = "play";
 });
 
-// Backsound Website
-// function playSound(audioName, loop, pause) {
-//   let audio = new Audio(audioName);
-//   audio.pause = false;
-//   audio.loop = true;
-//   audio.play();
-// }
-// playSound("/music.mp3");
+// Attempt autoplay on page load
+window.addEventListener("load", function () {
+  track.muted = false; // Unmute if you want sound immediately
+  track.play().then(() => {
+    controlBtn.className = "pause";
+  }).catch((error) => {
+    console.log("Autoplay failed:", error);
+    controlBtn.className = "play";
+  });
+});
 
 /* ========================================================================= */
 // RSVP
@@ -57,16 +58,13 @@ function gotoWhatsapp() {
   let message = document.getElementById("message").value;
 
   let url =
-    "https://wa.me/6285157066514?text=" + // Masukan no whatsapp kalian agar para tamu dapat mengirim pesan
-    "Nama : " +
-    name +
-    "%0a" +
-    +"Email : " +
-    email +
-    "%0a";
-  "Phone : " + phone + "%0a" + "%0a" + "Pesan : " + "%0a" + message;
+    "https://wa.me/6282220004080?text=" +
+    "Nama : " + name + "%0a" +
+    "Email : " + email + "%0a" +
+    "Phone : " + phone + "%0a" +
+    "Pesan : " + message;
 
-  window.open(url, "_black").focus();
+  window.open(url, "_blank").focus();
 }
 
 /* ========================================================================= */
